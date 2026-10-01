@@ -1,24 +1,24 @@
 # Qasim Traders — Demo Website
 
-Premium rice, spices & fried onions · Retail & Wholesale · Rawalpindi
+Rice, Spices & Pulses · Established 1952 · Ganjmandi, Rawalpindi
 Demo prepared by **Aevrix AI Technologies**.
 
 ## Stack
 - Next.js (App Router) + TypeScript
-- MUI (Material UI) with a custom theme — `src/theme/theme.ts`
-- Framer Motion for animations
-- Self-hosted fonts (Inter + Playfair Display via @fontsource)
+- MUI with a custom emerald & champagne theme — `src/theme/theme.ts`
+- Framer Motion animations
+- Self-hosted fonts (Inter + Plus Jakarta Sans via @fontsource)
 
-## Run locally
+## Features
+- Rice (per 25 kg bag) and spices (per kg) catalog with real product images (`public/images`)
+- Cart drawer → order sent on WhatsApp with name, phone and address
+- How ordering works, contact & business hours
+- Aevrix message + POS section
+
+## Run
 ```bash
 npm install
-npm run dev     # http://localhost:3000
-npm run build && npm start
+npm run dev
 ```
 
-## Edit content
-All text (phone numbers, products, POS features, comparison table) lives in `src/data/site.ts`.
-
-## Structure
-- `src/app/` — layout, page, global CSS, favicon
-- `src/components/` — TopBanner, Navbar, Hero, Marquee, Products, Wholesale, WhyUs, Contact, AevrixPOS, Footer, FloatingWhatsApp
+All content (products, prices, phone, hours) lives in `src/data/site.ts`.

@@ -9,28 +9,42 @@ export default function SectionHeading({
   title,
   subtitle,
   dark = false,
-  align = "center",
+  align = "left",
+  action,
 }: {
   overline: string;
   title: React.ReactNode;
   subtitle?: string;
   dark?: boolean;
   align?: "center" | "left";
+  action?: React.ReactNode;
 }) {
   return (
     <Reveal>
-      <Box sx={{ textAlign: align, maxWidth: align === "center" ? 720 : "none", mx: align === "center" ? "auto" : 0, mb: { xs: 5, md: 7 } }}>
-        <Typography variant="overline" sx={{ color: dark ? brand.gold : brand.goldDeep, display: "inline-flex", alignItems: "center", gap: 1.5 }}>
-          <Box component="span" sx={{ width: 28, height: "1px", bgcolor: "currentColor" }} />
-          {overline}
-          {align === "center" && <Box component="span" sx={{ width: 28, height: "1px", bgcolor: "currentColor" }} />}
-        </Typography>
-        <Typography variant="h2" sx={{ mt: 1.5, fontSize: { xs: "2.2rem", md: "3.2rem" }, color: dark ? brand.cream : brand.ink }}>
-          {title}
-        </Typography>
-        {subtitle && (
-          <Typography sx={{ mt: 2, fontSize: 17, lineHeight: 1.7, color: dark ? "rgba(247,242,230,0.68)" : "text.secondary" }}>{subtitle}</Typography>
-        )}
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: { xs: "column", md: align === "left" && action ? "row" : "column" },
+          alignItems: align === "center" ? "center" : { xs: "flex-start", md: action ? "flex-end" : "flex-start" },
+          justifyContent: "space-between",
+          gap: 2,
+          textAlign: align,
+          mb: { xs: 4, md: 6 },
+        }}
+      >
+        <Box sx={{ maxWidth: 680 }}>
+          <Typography variant="overline" sx={{ color: dark ? brand.champagne : brand.champagneDeep, display: "inline-flex", alignItems: "center", gap: 1.2 }}>
+            <Box component="span" sx={{ width: 18, height: 2, borderRadius: 2, bgcolor: "currentColor" }} />
+            {overline}
+          </Typography>
+          <Typography variant="h2" sx={{ mt: 1, fontSize: { xs: "2rem", md: "2.75rem" }, color: dark ? "#fff" : brand.ink }}>
+            {title}
+          </Typography>
+          {subtitle && (
+            <Typography sx={{ mt: 1.5, fontSize: 17, lineHeight: 1.7, color: dark ? "rgba(255,255,255,.66)" : brand.slate, mx: align === "center" ? "auto" : 0 }}>{subtitle}</Typography>
+          )}
+        </Box>
+        {action}
       </Box>
     </Reveal>
   );

@@ -1,11 +1,22 @@
 export const business = {
   name: "Qasim Traders",
-  tagline: "Premium Rice, Spices & Fried Onions",
-  city: "Rawalpindi",
+  tagline: "Rice, Spices & Pulses",
+  established: 1952,
+  address: "Shop No. V-219, Chaudhary Bazar, Ganjmandi, Rawalpindi",
   phone: "0332 5555003",
   phoneRaw: "+923325555003",
-  whatsapp: "https://wa.me/923325555003?text=" + encodeURIComponent("Assalam-o-Alaikum Qasim Traders, I would like to place an order."),
+  whatsappNumber: "923325555003",
+  whatsapp: "https://wa.me/923325555003",
+  hoursShort: "Open 9 AM – 10 PM · Friday closed",
+  deliveryShort: "Delivery available all 7 days, even Friday",
 };
+
+export const hours = [
+  { day: "Monday to Thursday", time: "9 AM – 10 PM" },
+  { day: "Friday", time: "Closed" },
+  { day: "Saturday and Sunday", time: "9 AM – 10 PM" },
+  { day: "Delivery", time: "Monday to Sunday" },
+];
 
 export const aevrix = {
   name: "Aevrix AI Technologies",
@@ -19,83 +30,71 @@ export const aevrix = {
 };
 
 export const navLinks = [
-  { label: "Products", href: "#products" },
-  { label: "Wholesale", href: "#wholesale" },
-  { label: "Why Us", href: "#why" },
+  { label: "Rice", href: "#rice" },
+  { label: "Spices", href: "#spices" },
+  { label: "Delivery", href: "#delivery" },
   { label: "Contact", href: "#contact" },
 ];
 
-export type ProductCategory = {
+export type Product = {
   id: string;
-  title: string;
-  urdu: string;
-  blurb: string;
-  accent: string;
-  accentSoft: string;
-  items: { name: string; note: string }[];
+  name: string;
+  tag: string;
+  price: number;
+  image: string;
+  kind: "rice" | "spice";
 };
 
-export const categories: ProductCategory[] = [
-  {
-    id: "rice",
-    title: "Premium Rice",
-    urdu: "چاول",
-    blurb: "Long, aromatic grains — aged, cleaned and graded for biryani, pulao and everyday cooking.",
-    accent: "#E9DFC6",
-    accentSoft: "#F6F0E1",
-    items: [
-      { name: "Super Kernel Basmati", note: "Aged · extra long grain" },
-      { name: "1121 Sella Basmati", note: "Golden sella · non-sticky" },
-      { name: "1121 Steam Basmati", note: "Bright white · fluffy" },
-      { name: "Daily Use Rice", note: "Value grade · households" },
-    ],
-  },
-  {
-    id: "spices",
-    title: "Pure Spices",
-    urdu: "مصالحہ جات",
-    blurb: "Whole and ground spices with deep colour and strong aroma — no fillers, no shortcuts.",
-    accent: "#B4492B",
-    accentSoft: "#F4E1D8",
-    items: [
-      { name: "Red Chilli Powder", note: "Rich colour · balanced heat" },
-      { name: "Haldi (Turmeric)", note: "Bright & earthy" },
-      { name: "Dhania & Zeera", note: "Whole or ground" },
-      { name: "Garam Masala", note: "House blend" },
-    ],
-  },
-  {
-    id: "onions",
-    title: "Fried Onions",
-    urdu: "تلی ہوئی پیاز",
-    blurb: "Crispy, golden-brown fried onions for biryani, qorma and pulao — consistent batch after batch.",
-    accent: "#C27A2C",
-    accentSoft: "#F5E6D2",
-    items: [
-      { name: "Crispy Fried Onion", note: "Golden · ready to use" },
-      { name: "Restaurant Bulk Packs", note: "For kitchens & caterers" },
-      { name: "Retail Packs", note: "Home kitchen sizes" },
-      { name: "Custom Orders", note: "On request" },
-    ],
-  },
+export const riceIntro = "Full 25 kg bags for homes, shops and events. Prices are per 25 kg bag.";
+export const spicesIntro = "Whole and ground spices, priced per kg. Choose from half a kilo upwards.";
+
+export const rice: Product[] = [
+  { id: "mizaeel", name: "Mizaeel Steam Rice", tag: "Long grain 1121 steam", price: 8250, image: "/images/rice-mizaeel.jpg", kind: "rice" },
+  { id: "strawberry", name: "Strawberry Steam Rice", tag: "Everyday steam rice", price: 8438, image: "/images/rice-strawberry.jpg", kind: "rice" },
+  { id: "silver", name: "Silver Steam Rice", tag: "Best value steam rice", price: 7500, image: "/images/rice-silver.jpg", kind: "rice" },
+  { id: "seerat", name: "Seerat Steam Rice", tag: "Premium long grain", price: 8875, image: "/images/rice-seerat.jpg", kind: "rice" },
+  { id: "al-sabar-gold", name: "Al Sabar Gold Steam Rice", tag: "Extra long grain", price: 8125, image: "/images/rice-al-sabar-gold.jpg", kind: "rice" },
 ];
 
-export const stats = [
-  { value: "Retail", label: "Home kitchens" },
-  { value: "Wholesale", label: "Shops, hotels & caterers" },
-  { value: "3", label: "Core product lines" },
-  { value: "Rawalpindi", label: "Serving the twin cities" },
+const spice = (id: string, name: string, price: number, tag = "Fresh and pure"): Product => ({
+  id,
+  name,
+  tag,
+  price,
+  image: `/images/${id}.jpg`,
+  kind: "spice",
+});
+
+export const spices: Product[] = [
+  spice("crushed-chilli-powder", "Crushed Chilli Powder", 550),
+  spice("red-chilli-powder", "Red Chilli Powder", 550),
+  spice("turmeric-powder", "Turmeric Powder", 550),
+  spice("coriander-seeds", "Coriander Seeds", 570),
+  spice("coriander-powder", "Coriander Powder", 570),
+  spice("black-pepper", "Black Pepper", 2300),
+  spice("black-pepper-powder", "Black Pepper Powder", 2200),
+  spice("white-cumin-seeds", "White Cumin Seeds", 1200),
+  spice("indian-cloves", "Indian Cloves", 3400),
+  spice("black-cardamom", "Black Cardamom", 3350),
+  spice("cinnamon", "Cinnamon", 7500),
+  spice("garam-masala-premium", "Garam Masala (Premium)", 1400, "Higher quality blend"),
+  spice("garam-masala-standard", "Garam Masala (Standard)", 1000, "Everyday quality blend"),
+  spice("fried-onions", "Fried Onions", 300),
 ];
 
-export const whyUs = [
-  { title: "Hand-Picked Quality", text: "Every lot is checked for grain length, aroma, colour and cleanliness before it reaches you." },
-  { title: "Fair, Honest Rates", text: "Transparent pricing for retail customers and competitive slabs for bulk buyers." },
-  { title: "Consistent Supply", text: "Reliable stock for restaurants, caterers and shops that can't afford to run out." },
-  { title: "Clean & Sealed Packing", text: "Hygienically packed to keep freshness, aroma and crunch locked in." },
+export const riceQty = [1, 2, 3, 5, 10];
+export const spiceQty = [0.5, 1, 2, 3, 5];
+
+export const fmt = (n: number) => "Rs " + Math.round(n).toLocaleString("en-US");
+
+export const orderSteps = [
+  { title: "Choose", text: "Pick rice bags or spices by the kilo and add them to your cart." },
+  { title: "Send your order", text: "Enter your name, phone and address. Your order goes to us on WhatsApp." },
+  { title: "Get it delivered", text: "We deliver to your door. Delivery charges depend on your area and order size." },
 ];
 
 export const posFeatures = [
-  { title: "Retail & Wholesale Billing", text: "Separate retail and wholesale rates, discounts and quick counter billing." },
+  { title: "Retail & Wholesale Billing", text: "Bag and per-kg pricing, retail and wholesale rates, discounts and quick counter billing." },
   { title: "Party Ledger (Khata)", text: "Track credit, payments and outstanding balances of every shop and customer." },
   { title: "Inventory & Stock Costing", text: "Track stock by bag and kg, wastage and per-item cost so you know your real profit." },
   { title: "Delivery & WhatsApp Orders", text: "Manage delivery orders and receive website/WhatsApp orders straight into your POS." },

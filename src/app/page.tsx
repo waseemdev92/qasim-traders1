@@ -1,13 +1,12 @@
 import TopBanner from "@/components/TopBanner";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import Marquee from "@/components/Marquee";
 import Products from "@/components/Products";
-import Wholesale from "@/components/Wholesale";
-import WhyUs from "@/components/WhyUs";
+import OrderSteps from "@/components/OrderSteps";
 import Contact from "@/components/Contact";
 import AevrixPOS from "@/components/AevrixPOS";
 import Footer from "@/components/Footer";
+import CartDrawer from "@/components/CartDrawer";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 
 export default function Home() {
@@ -17,14 +16,13 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
-        <Marquee />
         <Products />
-        <Wholesale />
-        <WhyUs />
+        <OrderSteps />
         <Contact />
         <AevrixPOS />
       </main>
       <Footer />
+      <CartDrawer />
       <FloatingWhatsApp />
     </>
   );
