@@ -1,0 +1,5 @@
+:root { --font-sans: "Inter Variable"; --font-serif: "Playfair Display Variable"; }
+html { scroll-behavior: smooth; }
+body { overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+::selection { background: #C9A24A; color: #0D0F0B; }
+section[id] { scroll-margin-top: 96px; }
